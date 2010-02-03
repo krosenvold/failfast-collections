@@ -32,6 +32,9 @@ public class ThreadAccessController implements Serializable {
         }
         lastThread = thread;
     }
+    public void checkWriteAccess() {
+        checkThreadAccess();
+    }
 
     private String getStackTrace(){
         StringBuilder result = new StringBuilder( );

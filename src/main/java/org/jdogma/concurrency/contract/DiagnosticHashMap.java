@@ -1,4 +1,4 @@
-package org.jdogma.concurrency.writechecked;
+package org.jdogma.concurrency.contract;
 
 import org.jdogma.concurrency.ThreadAccessController;
 

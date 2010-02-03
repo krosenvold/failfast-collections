@@ -1,12 +1,17 @@
-package org.jdogma.concurrency;
+package org.jdogma.concurrency.explore;
 
-import java.util.*;
+import org.jdogma.concurrency.ThreadAccessController;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
+ * Basically the same as "contract" since there is no difference for a hashmap.
  * @author <a href="mailto:kristian.rosenvold gmail com">Kristian Rosenvold</a>
  */
- @Deprecated
-public class DiagnosticHashMap<T,V> extends org.jdogma.concurrency.explore.DiagnosticHashMap<T,V> {
+public class DiagnosticHashMap<T,V> extends org.jdogma.concurrency.contract.DiagnosticHashMap<T,V> {
 
     public DiagnosticHashMap( int initialCapacity, float loadFactor )
     {
@@ -27,3 +32,4 @@ public class DiagnosticHashMap<T,V> extends org.jdogma.concurrency.explore.Diagn
         super( m );
     }
 }
+ 

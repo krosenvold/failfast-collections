@@ -1,8 +1,12 @@
-package org.jdogma.concurrency.writechecked;
+package org.jdogma.concurrency.explore;
 
 import org.jdogma.concurrency.ThreadAccessController;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * @author <a href="mailto:kristian.rosenvold gmail com">Kristian Rosenvold</a>
@@ -46,22 +50,27 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
     }
 
     public int size() {
+        threadAccessController.checkThreadAccess();
         return innerList.size();
     }
 
     public boolean isEmpty() {
+        threadAccessController.checkThreadAccess();
         return innerList.isEmpty();
     }
 
     public boolean contains(Object o) {
+        threadAccessController.checkThreadAccess();
         return innerList.contains(o);
     }
 
     public int indexOf(Object o) {
+        threadAccessController.checkThreadAccess();
         return innerList.indexOf(o);
     }
 
     public int lastIndexOf(Object o) {
+        threadAccessController.checkThreadAccess();
         return innerList.lastIndexOf(o);
     }
 
@@ -71,15 +80,18 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
     }
 
     public Object[] toArray() {
+        threadAccessController.checkThreadAccess();
         return innerList.toArray();
     }
 
     @SuppressWarnings({"SuspiciousToArrayCall"})
     public <T> T[] toArray(T[] a) {
+        threadAccessController.checkThreadAccess();
         return innerList.toArray(a);
     }
 
     public T get(int index) {
+        threadAccessController.checkThreadAccess();
         return innerList.get(index);
     }
 
@@ -124,31 +136,38 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
     }
 
     public Iterator<T> iterator() {
+        threadAccessController.checkThreadAccess();
         return innerList.iterator();
     }
 
     public ListIterator<T> listIterator() {
+        threadAccessController.checkThreadAccess();
         return innerList.listIterator();
     }
 
     public ListIterator<T> listIterator(int index) {
+        threadAccessController.checkThreadAccess();
         return innerList.listIterator(index);
     }
 
     public List<T> subList(int fromIndex, int toIndex) {
+        threadAccessController.checkThreadAccess();
         return innerList.subList(fromIndex, toIndex);
     }
 
     @SuppressWarnings({"EqualsWhichDoesntCheckParameterClass"})
     public boolean equals(Object o) {
+        threadAccessController.checkThreadAccess();
         return innerList.equals(o);
     }
 
     public int hashCode() {
+        threadAccessController.checkThreadAccess();
         return innerList.hashCode();
     }
 
     public boolean containsAll(Collection<?> c) {
+        threadAccessController.checkThreadAccess();
         return innerList.containsAll(c);
     }
 
@@ -163,6 +182,11 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
     }
 
     public String toString() {
+        threadAccessController.checkThreadAccess();
         return innerList.toString();
+    }
+
+    public static DiagnosticArrayList emptyList(){
+        return new DiagnosticArrayList( );
     }
 }
