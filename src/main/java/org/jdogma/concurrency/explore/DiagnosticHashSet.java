@@ -12,6 +12,7 @@ public class DiagnosticHashSet<T> extends org.jdogma.concurrency.contract.Diagno
 {
     public DiagnosticHashSet()
     {
+        super();
     }
 
     public DiagnosticHashSet( Collection<? extends T> c )

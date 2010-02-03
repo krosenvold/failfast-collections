@@ -11,34 +11,29 @@ import java.util.Iterator;
  */
 public class DiagnosticHashSet<T> extends HashSet<T>
 {
-    private final ThreadAccessController threadAccessController;
+    private final ThreadAccessController threadAccessController = new ThreadAccessController();
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet()
     {
-        threadAccessController = new ThreadAccessController();
-
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet( Collection<? extends T> c )
     {
         super( c );
-        threadAccessController = new ThreadAccessController();
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet( int initialCapacity, float loadFactor )
     {
         super( initialCapacity, loadFactor );
-        threadAccessController = new ThreadAccessController();
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet( int initialCapacity )
     {
         super( initialCapacity );
-        threadAccessController = new ThreadAccessController();
     }
 
 
