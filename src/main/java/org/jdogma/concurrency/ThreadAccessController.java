@@ -28,7 +28,7 @@ public class ThreadAccessController implements Serializable {
         final Thread thread = Thread.currentThread();
         if (seenThreads.contains(thread)) {
             if (!thread.equals(lastThread)) {
-                throw new UnsafeCollectionAccessException("The thread is accessing this collection intertwined with others, constructed at:" + getStackTrace());
+                throw new UnsafeCollectionAccessException("The thread is accessing this collection intertwined with others, constructed at:\n" + getStackTrace());
             }
         } else {
             seenThreads.add(thread);
