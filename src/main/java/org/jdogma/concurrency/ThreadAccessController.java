@@ -8,6 +8,7 @@ import java.util.Set;
 public class ThreadAccessController implements Serializable {
     final Set<Thread> seenThreads = Collections.synchronizedSet(new HashSet<Thread>());
     final StackTraceElement stackTraceAtConstruction;
+    final StackTraceElement stackTraceAtConstruction2;
     Thread lastThread;
 
     public ThreadAccessController() {
@@ -17,7 +18,9 @@ public class ThreadAccessController implements Serializable {
         }
         catch ( Exception e )
         {
-            stackTraceAtConstruction = e.getStackTrace()[2];
+            final StackTraceElement[] stackTraceElements = e.getStackTrace();
+            stackTraceAtConstruction = stackTraceElements[2];
+            stackTraceAtConstruction2 = stackTraceElements[3];
         }
     }
 
@@ -39,6 +42,8 @@ public class ThreadAccessController implements Serializable {
     private String getStackTrace(){
         StringBuilder result = new StringBuilder( );
         result.append(stackTraceAtConstruction.toString());
+        result.append( "\n");
+        result.append(stackTraceAtConstruction2.toString());
         result.append( "\n");
         return result.toString();
     }

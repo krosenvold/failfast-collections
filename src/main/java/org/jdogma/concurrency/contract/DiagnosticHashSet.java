@@ -68,7 +68,7 @@ public class DiagnosticHashSet<T> extends HashSet<T>
     @Override
     public boolean add( T t )
     {
-        threadAccessController.checkThreadAccess();
+        if (threadAccessController != null) threadAccessController.checkThreadAccess();
         return super.add( t );
     }
 
@@ -140,7 +140,7 @@ public class DiagnosticHashSet<T> extends HashSet<T>
     @Override
     public boolean addAll( Collection<? extends T> c )
     {
-        threadAccessController.checkThreadAccess();
+        if (threadAccessController != null) threadAccessController.checkThreadAccess();
         return super.addAll( c );
     }
 
