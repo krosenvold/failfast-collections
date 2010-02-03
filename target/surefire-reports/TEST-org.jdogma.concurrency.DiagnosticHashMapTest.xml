@@ -19,7 +19,7 @@
     <property name="basedir" value="c:\src\concurrency-test-tools"/>
     <property name="java.endorsed.dirs" value="c:\java\jdk1.6.0_17\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="c:\DOCUME~1\t535255\LOCALS~1\Temp\surefirebooter6373398312156855215.jar"/>
+    <property name="surefire.real.class.path" value="c:\DOCUME~1\t535255\LOCALS~1\Temp\surefirebooter51273295448008471.jar"/>
     <property name="java.io.tmpdir" value="c:\DOCUME~1\t535255\LOCALS~1\Temp\"/>
     <property name="line.separator" value="
 "/>
