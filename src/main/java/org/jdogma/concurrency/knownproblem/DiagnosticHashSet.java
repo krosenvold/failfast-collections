@@ -1,31 +1,36 @@
 package org.jdogma.concurrency.knownproblem;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 
 /**
  * @author Kristian Rosenvold
  */
 public class DiagnosticHashSet<T>
-    extends org.jdogma.concurrency.contract.DiagnosticHashSet<T>
+    extends HashSet<T>
 {
     private final Object lock = new Object();
 
+    @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet()
     {
         super();
     }
 
+    @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet( Collection<? extends T> c )
     {
         super( c );
     }
 
+    @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet( int initialCapacity, float loadFactor )
     {
         super( initialCapacity, loadFactor );
     }
 
+    @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet( int initialCapacity )
     {
         super( initialCapacity );

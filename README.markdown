@@ -17,7 +17,9 @@ You do a search-replace in your code:
 
 new HashMap --> new org.jdogma.concurrency.explore.DiagnosticHashMap
 new ArrayList --> new org.jdogma.concurrency.explore.DiagnosticArrayList
+new java.util.ArrayList --> new org.jdogma.concurrency.explore.DiagnosticArrayList
 new HashSet --> new org.jdogma.concurrency.explore.DiagnosticHashSet
+new java.util.HashSet --> new org.jdogma.concurrency.explore.DiagnosticHashSet
 
 Now things will explode the next time you run with threads. Run with # threads > 3.
 
