@@ -1,6 +1,6 @@
 package org.jdogma.concurrency.contract;
 
-import org.jdogma.concurrency.ThreadAccessController;
+import org.jdogma.concurrency.accesscontrollers.ThreadAccessControllerImpl;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class DiagnosticHashSet<T> extends HashSet<T>
 {
-    private final ThreadAccessController threadAccessController = new ThreadAccessController();
+    private final ThreadAccessControllerImpl threadAccessController = new ThreadAccessControllerImpl();
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashSet()

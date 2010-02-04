@@ -1,11 +1,6 @@
 package org.jdogma.concurrency.explore;
 
-import org.jdogma.concurrency.ThreadAccessController;
-
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 /**
  * Basically the same as "contract" since there is no difference for a hashmap.

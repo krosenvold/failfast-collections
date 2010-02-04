@@ -1,9 +1,6 @@
 package org.jdogma.concurrency.explore;
 
-import org.jdogma.concurrency.ThreadAccessController;
-
 import java.util.Collection;
-import java.util.Iterator;
 
 /**
  * @author Kristian Rosenvold

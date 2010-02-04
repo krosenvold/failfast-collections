@@ -1,4 +1,4 @@
-package org.jdogma.concurrency;
+package org.jdogma.concurrency.accesscontrollers;
 
 /**
  * @author <a href="mailto:kristian.rosenvold gmail com">Kristian Rosenvold</a>

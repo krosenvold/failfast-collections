@@ -1,6 +1,6 @@
 package org.jdogma.concurrency.contract;
 
-import org.jdogma.concurrency.ThreadAccessController;
+import org.jdogma.concurrency.accesscontrollers.ThreadAccessControllerImpl;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -12,37 +12,37 @@ import java.util.Set;
  */
 public class DiagnosticHashMap<T,V> extends HashMap<T,V> {
     private final HashMap<T,V> innerMap;
-    private final ThreadAccessController threadAccessController;
+    private final ThreadAccessControllerImpl threadAccessController;
 
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashMap(int initialCapacity, float loadFactor) {
         innerMap = new HashMap<T,V>(initialCapacity, loadFactor);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashMap(int initialCapacity) {
         innerMap = new HashMap<T,V>( initialCapacity);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashMap() {
         innerMap = new HashMap<T,V>( );
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     public DiagnosticHashMap(Map<? extends T, ? extends V> m) {
         innerMap = new HashMap<T,V>( m);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     @SuppressWarnings({"UnusedDeclaration"})
     private DiagnosticHashMap(DiagnosticHashMap<T,V> other) {
         this.innerMap = new HashMap<T,V>( other.innerMap);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     public int size() {

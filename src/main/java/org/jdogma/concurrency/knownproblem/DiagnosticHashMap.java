@@ -1,7 +1,5 @@
 package org.jdogma.concurrency.knownproblem;
 
-import org.jdogma.concurrency.ThreadAccessController;
-
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;

@@ -2,7 +2,8 @@ package org.jdogma.concurrency.contract;
 
 import org.jdogma.concurrency.DiagnosticIterator;
 import org.jdogma.concurrency.DiagnosticListIterator;
-import org.jdogma.concurrency.ThreadAccessController;
+import org.jdogma.concurrency.accesscontrollers.ThreadAccessController;
+import org.jdogma.concurrency.accesscontrollers.ThreadAccessControllerImpl;
 
 import java.util.*;
 
@@ -15,22 +16,19 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
 
     public DiagnosticArrayList(int initialCapacity) {
         super();
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     public DiagnosticArrayList() {
-        threadAccessController = new ThreadAccessController();
+        super();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
-    public DiagnosticArrayList(Collection<? extends T> c) {
-        threadAccessController = new ThreadAccessController();
+    public DiagnosticArrayList( Collection<? extends T> c)
+    {
+        super( c );
+        this.threadAccessController = new ThreadAccessControllerImpl();
     }
-
-
-    private DiagnosticArrayList( DiagnosticArrayList<T> diagnosticArrayList){
-        threadAccessController = new ThreadAccessController();
-    }
-
 
     @Override
     public void trimToSize()
@@ -43,82 +41,20 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
     public void ensureCapacity( int minCapacity )
     {
         threadAccessController.checkWriteAccess();
-        super.ensureCapacity(
-            minCapacity );    
-    }
-
-    @Override
-    public int size()
-    {
-        return super.size();    
-    }
-
-    @Override
-    public boolean isEmpty()
-    {
-        return super.isEmpty();    
-    }
-
-    @Override
-    public boolean contains( Object o )
-    {
-        return super.contains( o );    
-    }
-
-    @Override
-    public int indexOf( Object o )
-    {
-        return super.indexOf( o );    
-    }
-
-    @Override
-    public int lastIndexOf( Object o )
-    {
-        return super.lastIndexOf( o );    
-    }
-
-    @Override
-    public Object clone()
-    {
-        return super.clone();    
-    }
-
-    @Override
-    public Object[] toArray()
-    {
-        return super.toArray();    
-    }
-
-    @Override
-    public <T> T[] toArray( T[] a )
-    {
-        return super.toArray( a );    
-    }
-
-    @Override
-    public T get( int index )
-    {
-        return super.get( index );    
-    }
-
-    @Override
-    public T set( int index, T element )
-    {
-        return super.set( index,
-                          element );    
+        super.ensureCapacity( minCapacity );    
     }
 
     @Override
     public boolean add( T t )
     {
-        threadAccessController.checkWriteAccess();
+        if (threadAccessController != null)  threadAccessController.checkWriteAccess();
         return super.add( t );
     }
 
     @Override
     public void add( int index, T element )
     {
-        threadAccessController.checkWriteAccess();
+        if (threadAccessController != null) threadAccessController.checkWriteAccess();
         super.add( index, element );
     }
 
@@ -183,30 +119,6 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
         return new DiagnosticListIterator<T>( threadAccessController, super.listIterator(  index), true);
     }
 
-    @Override
-    public List<T> subList( int fromIndex, int toIndex )
-    {
-        return super.subList( fromIndex,
-                              toIndex );    
-    }
-
-    @Override
-    public boolean equals( Object o )
-    {
-        return super.equals( o );    
-    }
-
-    @Override
-    public int hashCode()
-    {
-        return super.hashCode();    
-    }
-
-    @Override
-    public boolean containsAll( Collection<?> c )
-    {
-        return super.containsAll( c );    
-    }
 
     @Override
     public boolean removeAll( Collection<?> c )
@@ -220,11 +132,5 @@ public class DiagnosticArrayList<T> extends ArrayList<T> {
     {
         threadAccessController.checkWriteAccess();
         return super.retainAll( c );    
-    }
-
-    @Override
-    public String toString()
-    {
-        return super.toString();    
     }
 }

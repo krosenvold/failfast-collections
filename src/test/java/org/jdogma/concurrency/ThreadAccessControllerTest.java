@@ -1,5 +1,7 @@
 package org.jdogma.concurrency;
 
+import org.jdogma.concurrency.accesscontrollers.ThreadAccessControllerImpl;
+import org.jdogma.concurrency.accesscontrollers.UnsafeCollectionAccessException;
 import org.junit.Test;
 
 import java.util.concurrent.Callable;
@@ -14,7 +16,7 @@ public class ThreadAccessControllerTest {
 
     @Test
     public void testShouldBeSafe() throws Exception {
-        ThreadAccessController sut = new ThreadAccessController();
+        ThreadAccessControllerImpl sut = new ThreadAccessControllerImpl();
 
         sut.checkThreadAccess();
         sut.checkThreadAccess();
@@ -30,7 +32,7 @@ public class ThreadAccessControllerTest {
 
     @Test(expected = UnsafeCollectionAccessException.class)
     public void testShouldFail() throws Exception {
-        ThreadAccessController sut = new ThreadAccessController();
+        ThreadAccessControllerImpl sut = new ThreadAccessControllerImpl();
 
         sut.checkThreadAccess();
         sut.checkThreadAccess();
@@ -45,10 +47,10 @@ public class ThreadAccessControllerTest {
     }
 
     class ThreadAccessControllerModifier implements Callable<Object> {
-        final ThreadAccessController threadAccessController;
+        final ThreadAccessControllerImpl threadAccessController;
         private final String value;
 
-        ThreadAccessControllerModifier(ThreadAccessController threadAccessController, String value) {
+        ThreadAccessControllerModifier( ThreadAccessControllerImpl threadAccessController, String value) {
             this.threadAccessController = threadAccessController;
             this.value = value;
         }

@@ -1,6 +1,6 @@
 package org.jdogma.concurrency.explore;
 
-import org.jdogma.concurrency.ThreadAccessController;
+import org.jdogma.concurrency.accesscontrollers.ThreadAccessControllerImpl;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,29 +13,29 @@ import java.util.ListIterator;
  */
 public class DiagnosticArrayList<T> extends ArrayList<T> {
     private final ArrayList<T> innerList;
-    private final ThreadAccessController threadAccessController;
+    private final ThreadAccessControllerImpl threadAccessController;
 
 
     public DiagnosticArrayList(int initialCapacity) {
         super();
         innerList = new ArrayList<T>(initialCapacity);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     public DiagnosticArrayList() {
         innerList = new ArrayList<T>();
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
     public DiagnosticArrayList(Collection<? extends T> c) {
         innerList = new ArrayList<T>(c);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
 
     private DiagnosticArrayList( DiagnosticArrayList<T> diagnosticArrayList){
         this.innerList = new ArrayList<T>(diagnosticArrayList.innerList);
-        threadAccessController = new ThreadAccessController();
+        threadAccessController = new ThreadAccessControllerImpl();
     }
 
 
