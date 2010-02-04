@@ -16,12 +16,13 @@ Checkout from source and build this project, mvn install
 
 Make a branch/copy of your code, add this library to pom.xml:
 
+<pre>
 <dependency>
     <groupId>org.jdogma.concurrency</groupId>
     <artifactId>failfast-collections</artifactId>
     <version>1.0-SNAPSHOT</version>
 </dependency>
-
+</pre>
 
 ## Basic operation
 
@@ -29,11 +30,15 @@ You do a search-replace in your code:
 
 <pre>
 new HashMap --> new org.jdogma.concurrency.explore.DiagnosticHashMap
+new java.util.HashMap --> new org.jdogma.concurrency.explore.DiagnosticHashMap
 new ArrayList --> new org.jdogma.concurrency.explore.DiagnosticArrayList
 new java.util.ArrayList --> new org.jdogma.concurrency.explore.DiagnosticArrayList
 new HashSet --> new org.jdogma.concurrency.explore.DiagnosticHashSet
 new java.util.HashSet --> new org.jdogma.concurrency.explore.DiagnosticHashSet
 </pre>
+
+You may also consider doing "find usages" on the constructors of the JDK objects after doing search/replace,
+it usually misses a few. 
 
 Now things will explode the next time you run with threads. Run with # threads > 3.
 
