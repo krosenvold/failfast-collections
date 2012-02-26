@@ -17,7 +17,7 @@ Checkout from source and build this project, mvn install
 Make a branch/copy of your code, add this library to pom.xml:
 
 &lt;dependency>
-    &lt;groupId>org.jdogma.concurrency&lt;/groupId>
+    &lt;groupId>org.rosenvold.concurrency&lt;/groupId>
     &lt;artifactId>failfast-collections&lt;/artifactId>
     &lt;version>1.0-SNAPSHOT&lt;/version>
 &lt;/dependency>
@@ -27,12 +27,12 @@ Make a branch/copy of your code, add this library to pom.xml:
 You do a search-replace in your code:
 
 <pre>
-new HashMap --> new org.jdogma.concurrency.explore.DiagnosticHashMap
-new java.util.HashMap --> new org.jdogma.concurrency.explore.DiagnosticHashMap
-new ArrayList --> new org.jdogma.concurrency.explore.DiagnosticArrayList
-new java.util.ArrayList --> new org.jdogma.concurrency.explore.DiagnosticArrayList
-new HashSet --> new org.jdogma.concurrency.explore.DiagnosticHashSet
-new java.util.HashSet --> new org.jdogma.concurrency.explore.DiagnosticHashSet
+new HashMap --> new org.rosenvold.concurrency.explore.DiagnosticHashMap
+new java.util.HashMap --> new org.rosenvold.concurrency.explore.DiagnosticHashMap
+new ArrayList --> new org.rosenvold.concurrency.explore.DiagnosticArrayList
+new java.util.ArrayList --> new org.rosenvold.concurrency.explore.DiagnosticArrayList
+new HashSet --> new org.rosenvold.concurrency.explore.DiagnosticHashSet
+new java.util.HashSet --> new org.rosenvold.concurrency.explore.DiagnosticHashSet
 </pre>
 
 You may also consider doing "find usages" on the constructors of the JDK objects after doing search/replace,
